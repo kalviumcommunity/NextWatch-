@@ -86,26 +86,159 @@ NextWatch-/
 ## Installation
 
 ### Prerequisites
-- Python 3.8+
-- pip
+- Python 3.8+ (tested with Python 3.14.4)
+- pip (Python package manager)
+- Git (optional, for cloning the repository)
 
-### Setup
+### Environment Setup
 
-1. **Clone or navigate to the project**
-   ```bash
-   cd NextWatch-
-   ```
+A virtual environment ensures project dependencies don't conflict with other Python projects on your system.
 
-2. **Create a virtual environment** (recommended)
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
+#### Step 1: Create a Virtual Environment
 
-3. **Install dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
+**Linux/macOS:**
+```bash
+cd NextWatch-
+python -m venv venv
+```
+
+**Windows (PowerShell):**
+```powershell
+cd NextWatch-
+python -m venv venv
+```
+
+**Windows (Command Prompt):**
+```cmd
+cd NextWatch-
+python -m venv venv
+```
+
+#### Step 2: Activate the Virtual Environment
+
+**Linux/macOS:**
+```bash
+source venv/bin/activate
+```
+
+You should see `(venv)` at the beginning of your terminal prompt.
+
+**Windows (PowerShell):**
+```powershell
+venv\Scripts\Activate.ps1
+```
+
+**Windows (Command Prompt):**
+```cmd
+venv\Scripts\activate.bat
+```
+
+You should see `(venv)` at the beginning of your command prompt.
+
+#### Step 3: Install Dependencies
+
+With the virtual environment activated, install all required packages:
+
+```bash
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+This installs the following core libraries with pinned versions:
+- **pandas==3.0.2** - Data manipulation and analysis
+- **numpy==2.4.4** - Numerical computing
+- **scikit-learn==1.8.0** - Machine learning algorithms
+- **matplotlib==3.10.9** - Plotting and visualization
+- **seaborn==0.13.2** - Statistical data visualization
+- **joblib==1.5.3** - Parallel computing and model serialization
+- **scipy==1.17.1** - Scientific computing
+- Plus additional supporting libraries (see `requirements.txt` for complete list)
+
+#### Step 4: Verify Installation
+
+Test that all packages are correctly installed:
+
+```bash
+python -c "import pandas, numpy, sklearn; print('✓ All core packages installed successfully')"
+```
+
+#### Step 5: Deactivate the Environment (When Done)
+
+When you're finished working on the project:
+
+```bash
+deactivate
+```
+
+The `(venv)` prefix will disappear from your prompt.
+
+### Environment Isolation
+
+The virtual environment provides complete isolation:
+- **Activated**: All imports use packages from `venv/lib/python3.x/site-packages/`
+- **Deactivated**: Packages installed in venv are inaccessible
+- **Global Python**: Unaffected by packages installed in venv
+
+This ensures that:
+- Your project works correctly on any machine with Python installed
+- No conflicts with other projects' dependencies
+- You can safely upgrade/downgrade packages without affecting system Python
+
+### .gitignore Configuration
+
+The `.gitignore` file is configured to exclude:
+- `venv/` - Virtual environment folder (not needed in git)
+- `__pycache__/` - Python cache files
+- `*.pkl` - Trained model files
+- Processed data files
+- IDE configuration files
+
+### Quick Reproduction from Git Clone
+
+A new team member can reproduce the environment with these commands:
+
+```bash
+# 1. Clone the repository
+git clone <repository-url>
+cd NextWatch-
+
+# 2. Create and activate virtual environment
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+
+# 3. Install dependencies
+pip install -r requirements.txt
+
+# 4. Validate setup
+python validate_project.py
+
+# Total time: ~5-10 minutes (depending on internet speed)
+```
+
+### Troubleshooting Environment Issues
+
+**Issue**: `python: command not found` or `'python' is not recognized`
+- **Solution**: Ensure Python is installed and added to PATH. Try `python3` instead of `python`.
+
+**Issue**: `venv: command not found`
+- **Solution**: Install venv module: `python -m pip install venv`
+
+**Issue**: `ModuleNotFoundError: No module named 'pandas'`
+- **Solution**: Ensure virtual environment is activated (look for `(venv)` in prompt). Run `pip install -r requirements.txt` again.
+
+**Issue**: On Windows, `Cannot be loaded because running scripts is disabled`
+- **Solution**: Open PowerShell as Administrator and run:
+  ```powershell
+  Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+  ```
+  Then try activating the environment again.
+
+**Issue**: Permission denied when activating on macOS/Linux
+- **Solution**: Make the script executable:
+  ```bash
+  chmod +x venv/bin/activate
+  source venv/bin/activate
+  ```
 
 ## Usage
 
