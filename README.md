@@ -240,6 +240,219 @@ python validate_project.py
   source venv/bin/activate
   ```
 
+## Project Setup Instructions
+
+This section provides a complete guide for setting up the project on any machine, enabling new team members to get started without additional assistance.
+
+### Prerequisites
+
+- **Python Version**: 3.8 or higher (tested with Python 3.14.4)
+- **Git** (optional, for cloning the repository)
+- **~500 MB disk space** (for virtual environment and dependencies)
+
+### Step-by-Step Setup (5-10 minutes)
+
+#### 1. Clone and Navigate to Project
+
+```bash
+# Clone the repository (if not already cloned)
+git clone <repository-url>
+cd NextWatch-
+```
+
+#### 2. Create Virtual Environment
+
+**Linux/macOS:**
+```bash
+python -m venv venv
+source venv/bin/activate
+```
+
+**Windows (PowerShell):**
+```powershell
+python -m venv venv
+venv\Scripts\Activate.ps1
+```
+
+**Windows (Command Prompt):**
+```cmd
+python -m venv venv
+venv\Scripts\activate.bat
+```
+
+**Verification:** You should see `(venv)` at the beginning of your terminal prompt.
+
+#### 3. Install Dependencies
+
+```bash
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+All 19 required packages will be installed with exact pinned versions for reproducibility:
+- **Core ML**: pandas, numpy, scikit-learn, scipy
+- **Visualization**: matplotlib, seaborn
+- **Utilities**: joblib, and supporting libraries
+
+**Installation time**: 2-5 minutes (depending on internet speed)
+
+#### 4. Verify Installation
+
+```bash
+python validate_project.py
+```
+
+Expected output: All checks should show ✓ (green checkmarks)
+
+### Running the Training Pipeline
+
+```bash
+# Basic training (uses default KNN model)
+python main.py train
+```
+
+**Expected execution time**: 5-10 seconds  
+**Output produced**:
+- `data/processed_movies.csv` - Cleaned data
+- `data/train_data.csv` - 80% training set
+- `data/test_data.csv` - 20% test set
+- `models/movie_recommendation_model.pkl` - Trained model
+- Console output with metrics (R² score, RMSE, MAE)
+
+**Example output snippet**:
+```
+✓ Preprocessing complete. Shape: (33, 10)
+✓ Feature engineering complete. Shape: (33, 13)
+✓ Training complete.
+✓ CV R² Score: 0.7234 (+/- 0.1523)
+✓ TRAINING PIPELINE COMPLETED SUCCESSFULLY
+```
+
+#### Training Options
+
+**Train with Random Forest instead of KNN:**
+```bash
+python main.py train --model rf
+```
+
+**Train with custom data:**
+```bash
+python main.py train --data /path/to/your_movies.csv
+```
+
+Data file must contain columns: `movie_title`, `release_year`, `rating`, `vote_count`, `revenue`, `budget`, `runtime`, `popularity`, `genre`, `next_movie_title`
+
+### Running Evaluation
+
+Evaluation runs automatically during training. To view detailed evaluation metrics:
+
+```bash
+# Metrics are printed during training and saved to models/
+python main.py train  # Check console output for evaluation section
+```
+
+**Metrics provided**:
+- **R² Score** (0-1): How well model explains the data. >0.7 is good.
+- **RMSE**: Root Mean Square Error. Lower is better.
+- **MAE**: Mean Absolute Error. Lower is better.
+- **Cross-Validation Score**: 5-fold CV with mean and std deviation
+- **Residual Analysis**: Mean, std, min, max, median of prediction errors
+
+### Running Predictions
+
+#### Single Movie Prediction
+
+```bash
+python main.py predict --movie "Inception" --genre "Science Fiction"
+```
+
+**Expected output**:
+```
+Recommended Movie ID: 19
+Confidence: 0.87
+```
+
+#### Batch Predictions (Multiple Movies)
+
+```bash
+python main.py batch --file data/sample_predictions.csv
+```
+
+**Input CSV format** (tab-separated or comma-separated):
+```
+movie_title,genre
+Inception,Science Fiction
+The Matrix,Science Fiction
+Titanic,Romance
+Jurassic Park,Adventure
+```
+
+**Expected output**:
+```
+[1] Inception (Science Fiction) → Movie ID: 19, Confidence: 0.87
+[2] The Matrix (Science Fiction) → Movie ID: 42, Confidence: 0.92
+[3] Titanic (Romance) → Movie ID: 15, Confidence: 0.76
+[4] Jurassic Park (Adventure) → Movie ID: 8, Confidence: 0.81
+```
+
+### Complete Setup Example
+
+```bash
+# 1. Navigate to project
+cd NextWatch-
+
+# 2. Create and activate virtual environment (adjust for your OS)
+python -m venv venv
+source venv/bin/activate  # macOS/Linux
+# OR: venv\Scripts\activate  # Windows
+
+# 3. Install dependencies
+pip install -r requirements.txt
+
+# 4. Verify setup
+python validate_project.py
+
+# 5. Train the model
+python main.py train
+
+# 6. Make a prediction
+python main.py predict --movie "Inception" --genre "Science Fiction"
+
+# 7. Try batch predictions
+python main.py batch --file data/sample_predictions.csv
+
+# 8. When done, deactivate environment
+deactivate
+```
+
+**Total time**: ~15-20 minutes for complete setup and testing
+
+### Deactivating the Virtual Environment
+
+When you're finished working on the project:
+
+```bash
+deactivate
+```
+
+The `(venv)` prefix will disappear from your prompt.
+
+### Supported Genres
+
+The system supports 18 genres for predictions:
+
+Action, Adventure, Animation, Comedy, Crime, Documentary, Drama, Family, Fantasy, History, Horror, Music, Mystery, Romance, Science Fiction, Thriller, War, Western
+
+### Quick Troubleshooting
+
+| Problem | Solution |
+|---------|----------|
+| `(venv)` not in prompt | Check you used correct activation command for your OS |
+| `ModuleNotFoundError: pandas` | Activate venv: `source venv/bin/activate` |
+| `pip: command not found` | Ensure venv is activated |
+| `python: command not found` | Try `python3` or check Python is installed |
+| Model file not found error | Run `python main.py train` first |
+
 ## Usage
 
 ### Command-Line Interface
