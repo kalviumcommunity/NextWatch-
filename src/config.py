@@ -13,17 +13,25 @@ PROJECT_ROOT = Path(__file__).parent.parent
 
 # Data paths
 DATA_DIR = PROJECT_ROOT / "data"
-RAW_DATA_PATH = DATA_DIR / "raw_movies.csv"
-PROCESSED_DATA_PATH = DATA_DIR / "processed_movies.csv"
-FEATURES_DATA_PATH = DATA_DIR / "features.csv"
-TRAIN_DATA_PATH = DATA_DIR / "train_data.csv"
-TEST_DATA_PATH = DATA_DIR / "test_data.csv"
+RAW_DATA_DIR = DATA_DIR / "raw"
+PROCESSED_DATA_DIR = DATA_DIR / "processed"
+RAW_DATA_PATH = RAW_DATA_DIR / "raw_movies.csv"
+SAMPLE_PREDICTIONS_PATH = RAW_DATA_DIR / "sample_predictions.csv"
+PROCESSED_DATA_PATH = PROCESSED_DATA_DIR / "processed_movies.csv"
+FEATURES_DATA_PATH = PROCESSED_DATA_DIR / "features.csv"
+TRAIN_DATA_PATH = PROCESSED_DATA_DIR / "train_data.csv"
+TEST_DATA_PATH = PROCESSED_DATA_DIR / "test_data.csv"
 
 # Model paths
 MODELS_DIR = PROJECT_ROOT / "models"
 MODEL_PATH = MODELS_DIR / "movie_recommendation_model.pkl"
 SCALER_PATH = MODELS_DIR / "feature_scaler.pkl"
 LABEL_ENCODER_PATH = MODELS_DIR / "label_encoder.pkl"
+
+# Notebooks, reports, and logs directories
+NOTEBOOKS_DIR = PROJECT_ROOT / "notebooks"
+REPORTS_DIR = PROJECT_ROOT / "reports"
+LOGS_DIR = PROJECT_ROOT / "logs"
 
 # Feature configuration
 FEATURES = [
