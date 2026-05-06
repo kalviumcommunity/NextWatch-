@@ -17,7 +17,7 @@ from sklearn.metrics import (
 )
 import json
 
-from config import (
+from .config import (
     TEST_DATA_PATH,
     TARGET_COLUMN,
     LOG_FORMAT,

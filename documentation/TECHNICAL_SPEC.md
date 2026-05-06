@@ -141,7 +141,102 @@ def scale_numeric_features(
 def select_features(
     df: pd.DataFrame,
     feature_list: list
-) -> pd.DataFrame
+) -> pd.DataFrame1. Data Loading Module
+Create a dedicated module responsible only for:
+
+Loading raw data from file (CSV or similar)
+Returning a DataFrame
+Handling file-related errors
+Not performing training or inference
+Example:
+
+src/data_loader.py
+Expected responsibilities:
+
+load_data(filepath: str)
+Basic validation
+No model code
+2. Training Module
+Create a training script that:
+
+Calls the data loader
+
+Performs preprocessing (fit only on training data)
+
+Splits train/test correctly
+
+Trains the model
+
+Evaluates on held-out test set
+
+Saves:
+
+Preprocessing artifacts
+Trained model
+Optional evaluation report
+Example:
+
+src/train.py
+Critical Requirements:
+
+No prediction on new user input inside this script
+All artifacts saved using joblib or equivalent
+random_state defined for reproducibility
+3. Inference (Prediction) Module
+Create a separate script responsible only for:
+
+Loading saved preprocessing pipeline
+Loading saved trained model
+Validating new input data
+Applying transform (NOT fit_transform)
+Generating predictions
+Returning structured output
+Example:
+
+src/predict.py
+Critical Requirements:
+
+No model fitting
+No train/test split
+No preprocessing fitting
+Uses saved artifacts only
+4. Folder Structure
+Your repository must reflect separation of concerns.
+
+Minimum expectation:
+
+project-root/
+│
+├── data/
+├── models/
+├── reports/
+├── src/
+│   ├── data_loader.py
+│   ├── train.py
+│   ├── predict.py
+│   ├── preprocessing.py (optional)
+│   └── config.py (optional)
+│
+├── requirements.txt
+└── README.md
+Functional Requirements
+Your implementation must demonstrate:
+
+Train/test split occurs before fitting
+
+Preprocessing fitted only on X_train
+
+Model saved after training
+
+Inference loads model and pipeline
+
+pipeline.transform() used in prediction (not fit_transform())
+
+Code runs independently:
+
+python src/train.py
+python src/predict.py --input data/sample_input.csv
+
     """Select specified features from DataFrame."""
     # Returns: DataFrame with only selected features
 

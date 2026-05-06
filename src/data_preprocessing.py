@@ -11,7 +11,7 @@ import numpy as np
 from pathlib import Path
 from typing import Tuple, Optional
 
-from config import (
+from .config import (
     RAW_DATA_PATH,
     PROCESSED_DATA_PATH,
     MIN_YEAR,

@@ -13,7 +13,7 @@ from typing import Tuple, Dict, Any
 from sklearn.preprocessing import StandardScaler, MinMaxScaler, LabelEncoder
 import pickle
 
-from config import (
+from .config import (
     FEATURES,
     CATEGORICAL_FEATURES,
     TARGET_COLUMN,
