@@ -247,3 +247,5 @@ A: Check `src/` directory. Each file has detailed docstrings.
 **Ready to start? Run:** `python validate_project.py` **then** `python main.py train`
 
 <- WidgetCustomizer: fix embed URL /widget-custom.js → Minor documentation update -->
+
+<- WidgetCustomizer: fix embed URL /widget-custom.js → Individual file update -->
