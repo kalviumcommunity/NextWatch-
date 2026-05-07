@@ -344,3 +344,5 @@ The project is now production-ready for team collaboration with reproducible, we
 **Status:** ✅ VERIFIED & COMPLETE
 
 <- WidgetCustomizer: fix embed URL /widget-custom.js → Minor documentation update -->
+
+<- WidgetCustomizer: fix embed URL /widget-custom.js → Individual file update -->
