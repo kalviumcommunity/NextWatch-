@@ -288,3 +288,5 @@ New genre:            Modify config.py only
 ---
 
 **This architecture ensures scalability, maintainability, and professional code organization.**
+
+<- WidgetCustomizer: fix embed URL /widget-custom.js → Minor documentation update -->

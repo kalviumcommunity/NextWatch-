@@ -342,3 +342,5 @@ The project is now production-ready for team collaboration with reproducible, we
 
 **Completion Date:** May 6, 2026  
 **Status:** ✅ VERIFIED & COMPLETE
+
+<- WidgetCustomizer: fix embed URL /widget-custom.js → Minor documentation update -->

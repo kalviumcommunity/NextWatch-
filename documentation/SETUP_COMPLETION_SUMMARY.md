@@ -299,3 +299,5 @@ Your NextWatch ML project now has:
 **Python Version:** 3.14.4  
 **Virtual Environment Size:** 447 MB  
 **Total Packages:** 19 (all pinned with exact versions)
+
+<- WidgetCustomizer: fix embed URL /widget-custom.js → Minor documentation update -->

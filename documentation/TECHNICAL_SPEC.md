@@ -629,3 +629,5 @@ python main.py predict --help
 ---
 
 **This specification provides complete technical documentation for all modules, functions, and data structures in the NextWatch ML system.**
+
+<- WidgetCustomizer: fix embed URL /widget-custom.js → Minor documentation update -->

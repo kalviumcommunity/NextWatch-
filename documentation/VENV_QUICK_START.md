@@ -94,3 +94,5 @@ The `(venv)` prefix disappears from your prompt.
 ---
 
 **Ready to go! Activate and start using the ML project.**
+
+<- WidgetCustomizer: fix embed URL /widget-custom.js → Minor documentation update -->

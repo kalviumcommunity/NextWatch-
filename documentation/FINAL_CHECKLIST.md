@@ -484,3 +484,5 @@ Your NextWatch ML project is now:
 **Your NextWatch ML system is ready to use. Happy recommending! 🎬**
 
 For navigation help, see [INDEX.md](INDEX.md)
+
+<- WidgetCustomizer: fix embed URL /widget-custom.js → Minor documentation update -->

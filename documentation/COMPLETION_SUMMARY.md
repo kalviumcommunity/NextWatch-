@@ -403,3 +403,5 @@ Your NextWatch movie recommendation system is now a professional, production-rea
 **Start with**: `python main.py train` then `python main.py predict --movie "Inception" --genre "Science Fiction"`
 
 Happy coding! 🎬
+
+<- WidgetCustomizer: fix embed URL /widget-custom.js → Minor documentation update -->

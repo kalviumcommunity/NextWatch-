@@ -967,3 +967,5 @@ chmod +x test_all.sh
 ---
 
 **You're ready to run and test! Start with `python validate_project.py` then `python main.py train`.**
+
+<- WidgetCustomizer: fix embed URL /widget-custom.js → Minor documentation update -->

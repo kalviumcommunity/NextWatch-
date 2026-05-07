@@ -222,3 +222,5 @@ NextWatch- ML Project Environment
 **Created:** May 6, 2026  
 **Modified:** Now  
 **Status:** Complete & Verified ✅
+
+<- WidgetCustomizer: fix embed URL /widget-custom.js → Minor documentation update -->
