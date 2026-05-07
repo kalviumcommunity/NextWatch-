@@ -191,3 +191,5 @@ See `README.md` for:
 **You're ready to go!** Train your first model and make predictions. 🎬
 
 <- WidgetCustomizer: fix embed URL /widget-custom.js → Minor documentation update -->
+
+<- WidgetCustomizer: fix embed URL /widget-custom.js → Individual file update -->
